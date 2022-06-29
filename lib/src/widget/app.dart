@@ -14,6 +14,7 @@ class AntApp extends StatefulWidget {
     this.showPerformanceOverlay = false,
   })  : routeInformationParser = null,
         routerDelegate = null,
+        routeInformationProvider = null,
         super(key: key);
 
   const AntApp.router({
@@ -21,6 +22,7 @@ class AntApp extends StatefulWidget {
     required this.showPerformanceOverlay,
     required this.routeInformationParser,
     required this.routerDelegate,
+    required this.routeInformationProvider,
   })  : home = null,
         super(key: key);
 
@@ -28,6 +30,7 @@ class AntApp extends StatefulWidget {
   final bool showPerformanceOverlay;
   final RouteInformationParser<Object>? routeInformationParser;
   final RouterDelegate<Object>? routerDelegate;
+  final RouteInformationProvider? routeInformationProvider;
 
   @override
   State<AntApp> createState() => _AntAppState();
@@ -49,6 +52,7 @@ class _AntAppState extends State<AntApp> {
       app = MaterialApp.router(
         debugShowCheckedModeBanner: false,
         routeInformationParser: widget.routeInformationParser!,
+        routeInformationProvider: widget.routeInformationProvider,
         routerDelegate: widget.routerDelegate!,
         showPerformanceOverlay: widget.showPerformanceOverlay,
       );
